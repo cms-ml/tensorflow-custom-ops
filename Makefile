@@ -1,8 +1,8 @@
-ALLIBS := $(patsubst %_module.cc,lib%.so,$(wildcard *_module.cc))
+ALLIBS := $(patsubst %_module.cc,libtf_op_%.so,$(wildcard *_module.cc))
 
 all: $(ALLIBS)
 
-lib%.so: %_kernel.o %_module.o 
+libtf_op_%.so: %_kernel.o %_module.o 
 	g++ -shared -o $@ $^ $(TF_OPS_CFLAGS) -fPIC $(TF_OPS_LFLAGS)
 
 %_module.o: %_module.cc	
