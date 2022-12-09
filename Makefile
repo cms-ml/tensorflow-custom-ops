@@ -2,7 +2,7 @@ ALLIBS := $(patsubst %_module.cc,lib%.so,$(wildcard *_module.cc))
 
 all: $(ALLIBS)
 
-%.so: %_kernel.o %_module.o 
+lib%.so: %_kernel.o %_module.o 
 	g++ -shared -o $@ $^ $(TF_OPS_CFLAGS) -fPIC $(TF_OPS_LFLAGS)
 
 %_module.o: %_module.cc	
